@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "T-shirt",
+    "imgUrl": "https://down-vn.img.susercontent.com/file/vn-50009109-8326067f1f1740601cd3715d49cbbf76",
+    "price": "60",
+    "salePrice": "40"
+  },
+  {
+    "id": 2,
+    "name": "Short",
+    "imgUrl": "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lq35o4rd1t133a",
+    "price": "50",
+    "salePrice": "45"
+  },
+  {
+    "id": 3,
+    "name": "Dress",
+    "imgUrl": "https://down-vn.img.susercontent.com/file/vn-50009109-8326067f1f1740601cd3715d49cbbf76",
+    "price": "100",
+    "salePrice": "80"
+  },
+  {
+    "id": 4,
+    "name": "Women Corset Top",
+    "imgUrl": "https://img.ltwebstatic.com/images3_pi/2023/12/14/4b/17025337789d2a15273adf839fa711f0d544db92b4_wk_shein_thumbnail_900x.webp",
+    "price": "80",
+    "salePrice": "45"
+  },
+  {
+    "id": 5,
+    "name": "Women Backless Halter Top",
+    "imgUrl": "https://img.ltwebstatic.com/images3_pi/2024/02/29/e1/170919270952a026d2975af1bf012c7aca0fddaad3_wk_shein_thumbnail_900x.webp",
+    "price": "80",
+    "salePrice": "45"
+  },
+  {
+    "id": 6,
+    "name": "Grey Sweater",
+    "imgUrl": "https://pos.nvncdn.com/4260cc-24295/ps/20230818_nCyNt6pJ0b.jpeg",
+    "price": "150",
+    "salePrice": "130"
+  }
+]
