@@ -3,13 +3,13 @@ import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.2/fi
 
 const firebase = new Firebase();
 
-const cartLocal = JSON.parse(localStorage.getItem("cart"));
-console.log(cartLocal);
-document.getElementById("product-count").innerHTML = cartLocal?.length || 0;
+const cart = JSON.parse(localStorage.getItem("cart"));
+console.log(cart);
+document.getElementById("product-count").innerHTML = cart?.length || 0;
 
 function handleAuthStateChanged(user) {
   if (user) {
-    console.log("User da dang nhap", user);
+    console.log("User ĐÃ ĐĂNG NHẬP", user);
 
     document.getElementById("user-actions").innerHTML = `
       <div class="dropdown text-end">
@@ -48,10 +48,10 @@ function handleAuthStateChanged(user) {
       .getElementById("sign-out-btn")
       .addEventListener("click", handleLogout);
   } else {
-    console.log("Chua dang nhap");
+    console.log("CHƯA ĐĂNG NHẬP");
     document.getElementById("user-actions").innerHTML = `
-      <a type="button" class="btn btn-outline-light me-2" href="./sign-in.html">Login</a>
-      <a type="button" class="btn btn-warning" href="./sign-up.html">Sign-up</a>
+      <a type="button" class="btn btn-primary me-2" href="./sign-in.html">Login</a>
+      <a type="button" class="btn btn-success" href="./sign-up.html">Sign-up</a>
     `;
   }
 }
@@ -59,12 +59,10 @@ function handleAuthStateChanged(user) {
 onAuthStateChanged(firebase.auth, handleAuthStateChanged);
 
 const result = await axios.get(
-  "https://6607c777a2a5dd477b136b02.mockapi.io/producuts"
+  "https://661aaae365444945d04e42f0.mockapi.io/products"
 );
 
 const products = result.data;
-
-let cart = [];
 
 function addToCart(productId) {
   const product = products.find(function (item) {
