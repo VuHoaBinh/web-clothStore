@@ -3,8 +3,8 @@ import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.2/fi
 
 const firebase = new Firebase();
 
-const cart = JSON.parse(localStorage.getItem("cart"));
-console.log(cart);
+const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
 document.getElementById("product-count").innerHTML = cart?.length || 0;
 
 function handleAuthStateChanged(user) {
@@ -51,7 +51,7 @@ function handleAuthStateChanged(user) {
     console.log("CHƯA ĐĂNG NHẬP");
     document.getElementById("user-actions").innerHTML = `
       <a type="button" class="btn btn-primary me-2" href="./sign-in.html">Login</a>
-      <a type="button" class="btn btn-success" href="./sign-up.html">Sign-up</a>
+      <a type="button" class="btn btn-success" href="./sign-in.html">Sign-up</a>
     `;
   }
 }
@@ -64,6 +64,60 @@ const result = await axios.get(
 
 const products = result.data;
 
+// display item have choice
+function renderCart(data) {
+  let htmlString = "";
+
+  for (let index = 0; index < data.length; index++) {
+    const product = data[index];
+
+    htmlString =
+      htmlString +
+      `
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <div class="d-flex flex-row align-items-center">
+                <div>
+                  <img
+                    src="${product.imgUrl}"
+                    class="img-fluid rounded-3"
+                    alt="Shopping item"
+                    style="width: 65px"
+                  />
+                </div>
+                <div class="ms-3">
+                  <h5>${product.name}</h5>
+                </div>
+              </div>
+              <div class="d-flex flex-row align-items-center">
+                <div style="width: 80px">
+                  <h5 class="mb-0">$${product.salePrice}</h5>
+                </div>
+                <a href="#!" style="color: #cecece"
+                  ><i class="fas fa-trash-alt" onclick="removeItem(${index})"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+  }
+  document.getElementById("cart-body").innerHTML = htmlString;
+
+  if (data.length === 0) {
+    document.getElementById("cart-body").innerHTML = `
+    <div class="text-center">
+    <h3>Nothing :))) You must 10 items in here!!! Now </h3>
+    </div>`;
+  }
+
+  totalPrice(data);
+}
+
+renderCart(cart);
+
+// add
 function addToCart(productId) {
   const product = products.find(function (item) {
     return item.id === productId;
@@ -72,11 +126,45 @@ function addToCart(productId) {
   cart.push(product);
   localStorage.setItem("cart", JSON.stringify(cart));
   document.getElementById("product-count").innerHTML = cart.length;
+  renderCart(cart);
   console.log(cart);
 }
 
 window.addToCart = addToCart;
 
+// remove
+function removeItem(id) {
+  cart.splice(id, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  document.getElementById("product-count").innerHTML = cart.length;
+  renderCart(cart);
+  console.log(cart);
+}
+
+window.removeItem = removeItem;
+
+// total price
+function totalPrice(data) {
+  let total = 0;
+  for (let index = 0; index < data.length; index++) {
+    total = total + parseFloat(data[index].salePrice);
+  }
+  document.getElementById("totalPrice").innerHTML = `$${total}`;
+}
+
+window.removeItem = removeItem;
+
+function payment(event) {
+  event.preventDefault();
+  localStorage.clear();
+
+  window.location.reload();
+  alert("Thanks for visiting");
+}
+
+document.getElementById("paymentButton").addEventListener("click", payment);
+
+// display items
 let htmlString = "";
 
 for (let index = 0; index < products.length; index++) {
@@ -87,14 +175,21 @@ for (let index = 0; index < products.length; index++) {
     `
       <div class="col-12 col-sm-6 col-md-4 col-lg-3">
         <div class="card my-2">
-          <img
-            src="${product.imgUrl}"
-            class="card-img-top"
-          />
+          <img src="${product.imgUrl}" class="card-img-top" />
           <div class="card-body">
             <h5 class="card-title" style="height: 50px;">${product.name}</h5>
-            <button class="btn btn-warning" onclick = "addToCart(${product.id})">Thêm sản phẩm</button>
+            <span class="price text-decoration-line-through"
+              >Price origin: $${product.price}</span
+            >
+            <span class="salePrice">Price: $${product.salePrice}</span>
           </div>
+          <span class = "name_cart">Add to Cart </span>
+          <button
+            class="btn btn-warning btn-addItem"
+            onclick="addToCart(${product.id})"
+          >
+            <i class="fa-solid fa-plus" ></i>
+          </button>
         </div>
       </div>
     `;
@@ -102,6 +197,7 @@ for (let index = 0; index < products.length; index++) {
 
 document.getElementById("product-list").innerHTML = htmlString;
 
+// banner slick slide
 let items = document.querySelectorAll(".slider .list .item");
 let next = document.getElementById("next");
 let prev = document.getElementById("prev");
@@ -118,6 +214,7 @@ next.onclick = function () {
   }
   showSlider();
 };
+
 //event prev click
 prev.onclick = function () {
   itemActive = itemActive - 1;
@@ -156,76 +253,3 @@ thumbnails.forEach((thumbnail, index) => {
     showSlider();
   });
 });
-
-const cardData = [
-  {
-    title: "IPhone 2025",
-    originalPrice: "2.600.000",
-    discountedPrice: "2.200.000",
-    imgUrl:
-      "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-13_2_.png",
-  },
-];
-
-function createCard(cardInfo) {
-  const card = document.createElement("div");
-  card.classList.add("card", "mb-3");
-
-  const row = document.createElement("div");
-  row.classList.add("row", "g-0");
-
-  const colImg = document.createElement("div");
-  colImg.classList.add("col-md-4");
-
-  const img = document.createElement("img");
-  img.src = cardInfo.imgUrl;
-  img.classList.add("img-fluid", "rounded-start");
-  img.alt = "...";
-
-  const colBody = document.createElement("div");
-  colBody.classList.add("col-md-8");
-
-  const cardBody = document.createElement("div");
-  cardBody.classList.add("card-body");
-
-  const title = document.createElement("h5");
-  title.classList.add("card-title");
-  title.textContent = cardInfo.title;
-
-  const priceWrapper = document.createElement("div");
-
-  const originalPrice = document.createElement("p");
-  originalPrice.classList.add(
-    "my-1",
-    "text-decoration-line-through",
-    "fst-italic"
-  );
-  originalPrice.textContent = cardInfo.originalPrice;
-
-  const discountedPrice = document.createElement("p");
-  discountedPrice.classList.add("my-1", "text-danger", "fw-bold");
-  discountedPrice.textContent = cardInfo.discountedPrice;
-
-  card.appendChild(row);
-  row.appendChild(colImg);
-  colImg.appendChild(img);
-  row.appendChild(colBody);
-  colBody.appendChild(cardBody);
-  cardBody.appendChild(title);
-  cardBody.appendChild(priceWrapper);
-  priceWrapper.appendChild(originalPrice);
-  priceWrapper.appendChild(discountedPrice);
-
-  return card;
-}
-
-function addCardsToDOM() {
-  const cardContainer = document.getElementById("card-container");
-
-  cardData.forEach((cardInfo) => {
-    const card = createCard(cardInfo);
-    cardContainer.appendChild(card);
-  });
-}
-
-addCardsToDOM();

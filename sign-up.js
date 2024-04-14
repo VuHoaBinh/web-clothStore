@@ -14,8 +14,9 @@ function handleAuthStateChanged(user) {
       e.preventDefault();
 
       const displayName = document.getElementById("displayName").value;
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
+      const email = document.getElementById("emailSignUp").value;
+      const password = document.getElementById("passwordSignUp").value;
+      console.log(displayName, email, password);
 
       try {
         const result = await firebase.register(email, password);
@@ -25,7 +26,17 @@ function handleAuthStateChanged(user) {
 
         const user = result.user;
         console.log(user);
+        Swal.fire({
+          title: "Đăng kí thành công",
+          text: "Welcome to my website",
+          icon: "success",
+        });
       } catch (error) {
+        Swal.fire({
+          title: "Đăng kí thất bại",
+          text: error.message,
+          icon: "error",
+        });
         console.log(error);
       }
     }

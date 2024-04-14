@@ -2,26 +2,30 @@
 <html>
   <head>
     <title>Title</title>
-    <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <link rel="icon" href="./image/logo.png" />
-    <!-- Bootstrap CSS v5.2.1 -->
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous"
     />
-
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v6.5.2/css/all.css"
     />
 
+    <!-- slick slide -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
+    />
     <link rel="stylesheet" href="./index.css" />
   </head>
 
@@ -34,7 +38,11 @@
         <div
           class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
         >
-          <a href="/" class="d-flex align-items-center mb-2 mb-lg-0">
+          <a
+            href="./index.html"
+            class="d-flex align-items-center mb-2 mb-lg-0"
+            style="cursor: pointer"
+          >
             <img
               alt="myphoto"
               src="./image/logo-removebg.png"
@@ -46,31 +54,21 @@
           <ul
             class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
           >
-            <li><a href="#" class="nav-link px-2 menu">Home</a></li>
-            <li><a href="#" class="nav-link px-2 menu">Cloth</a></li>
-            <li><a href="#" class="nav-link px-2 menu">Contact</a></li>
+            <li><a href="./index.html" class="nav-link px-2 menu">Home</a></li>
+            <li><a href="#menu" class="nav-link px-2 menu">Cloth</a></li>
+            <li><a href="#myteam" class="nav-link px-2 menu">My Team</a></li>
             <li>
-              <a href="#" class="nav-link px-2 menu">My Information</a>
+              <a href="#sponsor" class="nav-link px-2 menu">My Sponsor</a>
             </li>
-            <li><a href="#" class="nav-link px-2 menu">About</a></li>
+            <li><a href="#contact" class="nav-link px-2 menu">About</a></li>
           </ul>
-
-          <!-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-            <input
-              type="search"
-              class="form-control form-control-dark text-bg-dark"
-              placeholder="Search..."
-              aria-label="Search"
-            />
-          </form> -->
 
           <div>
             <button
               class="pr-2 cart-shopping me-2"
               type="button"
-              data-bs-toggle="offcanvas"
-              data-bs-target="#cart-modal"
-              aria-controls="offcanvasExample"
+              data-bs-toggle="modal"
+              data-bs-target="#myModal"
             >
               <span><i class="fa-solid fa-cart-shopping"></i></span>
               <span id="product-count">0</span>
@@ -189,45 +187,414 @@
         </div>
       </div>
     </div>
-
-    <div class="container">
-      <div class="row" id="product-list"></div>
-    </div>
-
-    <div
-      class="offcanvas offcanvas-start"
-      tabindex="-1"
-      id="cart-modal"
-      aria-labelledby="offcanvasExampleLabel"
+    <!-- /////////////////////////////////////////// -->
+    <section
+      style="background-image: url(assets/images/menu-bg.png)"
+      class="our-menu section bg-light repeat-img"
+      id="menu"
     >
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Giỏ hàng</h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="offcanvas"
-          aria-label="Close"
-        ></button>
+      <div class="sec-wp">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="sec-title text-center mb-5">
+                <p class="sec-sub-title mb-3">My Clothes</p>
+                <h2 class="h2-title">
+                  Elevate your style,
+                  <span>define your identity with our iconic fashion.</span>
+                </h2>
+                <div class="sec-title-shape mb-4">
+                  <img src="./image/title-shape.svg" alt="myphoto" />
+                </div>
+              </div>
+              <form style="position: relative">
+                <input
+                  type="text"
+                  id="search"
+                  name="search"
+                  class="search"
+                  placeholder="Search ...."
+                />
+                <i class="fa-solid fa-magnifying-glass icon-search"></i>
+              </form>
+              <div class="">
+                <div class="row" id="product-list"></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="offcanvas-body flex fill" id="card-container"></div>
+    </section>
 
-      <div>
-        <p>Total = <span id="total-price">0</span></p>
-        <button class="btn btn-warning">Order</button>
-      </div>
+    <!-- ///////////////////////////////////////// -->
+
+    <div class="modal" id="myModal">
+      <section class="h-100 h-custom" style="background-color: transparent">
+        <div class="container py-5 h-100">
+          <div
+            class="row d-flex justify-content-center align-items-center h-100"
+          >
+            <div class="col">
+              <div class="card">
+                <div class="card-body p-4">
+                  <div class="row">
+                    <div class="col-lg-7">
+                      <h5 class="mb-3">
+                        <a
+                          class="text-body"
+                          style="text-decoration: none; pointer: cursor"
+                          href="./index.html"
+                        >
+                          <i class="fas fa-long-arrow-alt-left me-2"></i>Go
+                          back</a
+                        >
+                      </h5>
+                      <hr />
+
+                      <div
+                        class="d-flex justify-content-between align-items-center mb-4"
+                      >
+                        <div>
+                          <h2 class="mb-1">Your shopping cart</h2>
+                          <p class="mb-0">
+                            You have <span id="product-count">0</span> items in
+                            your cart
+                          </p>
+                        </div>
+                        <div>
+                          <p class="mb-0">
+                            <span class="text-muted">Sort by:</span>
+                            <a href="#!" class="text-body"
+                              >price <i class="fas fa-angle-down mt-1"></i
+                            ></a>
+                          </p>
+                        </div>
+                      </div>
+                      <div
+                        class="flex-fill"
+                        id="cart-body"
+                        style="max-height: 500px; overflow-y: auto"
+                      ></div>
+                    </div>
+
+                    <!-- thanh toan -->
+                    <div class="col-lg-5">
+                      <div class="card bg-success text-white rounded-3">
+                        <div class="card-body">
+                          <div
+                            class="d-flex justify-content-between align-items-center mb-4"
+                          >
+                            <h5 class="mb-0">Card details</h5>
+                          </div>
+
+                          <p class="small mb-2">Card type</p>
+                          <a href="#" type="submit" class="text-white"
+                            ><i class="fab fa-cc-mastercard fa-2x me-2"></i
+                          ></a>
+                          <a href="#" type="submit" class="text-white"
+                            ><i class="fab fa-cc-visa fa-2x me-2"></i
+                          ></a>
+                          <a href="#" type="submit" class="text-white"
+                            ><i class="fab fa-cc-amex fa-2x me-2"></i
+                          ></a>
+                          <a href="#" type="submit" class="text-white"
+                            ><i class="fab fa-cc-paypal fa-2x"></i
+                          ></a>
+
+                          <form class="mt-4">
+                            <div
+                              data-mdb-input-init
+                              class="form-outline form-white mb-4"
+                            >
+                              <input
+                                type="text"
+                                id=""
+                                class="form-control form-control-lg"
+                                siez="17"
+                                placeholder="FullName"
+                              />
+                              <label class="form-label" for="fullName"
+                                >Ex: Diep Thu</label
+                              >
+                            </div>
+
+                            <div
+                              data-mdb-input-init
+                              class="form-outline form-white mb-4"
+                            >
+                              <input
+                                type="text"
+                                id="typeText"
+                                class="form-control form-control-lg"
+                                siez="17"
+                                placeholder="1234 5678 9012 3457"
+                                minlength="19"
+                                maxlength="19"
+                              />
+                              <label class="form-label" for="typeText"
+                                >Card Number</label
+                              >
+                            </div>
+
+                            <div class="row mb-4">
+                              <div class="col-md-6">
+                                <div
+                                  data-mdb-input-init
+                                  class="form-outline form-white"
+                                >
+                                  <input
+                                    type="text"
+                                    id="typeExp"
+                                    class="form-control form-control-lg"
+                                    placeholder="MM/YYYY"
+                                    size="7"
+                                    id="exp"
+                                    minlength="7"
+                                    maxlength="7"
+                                  />
+                                  <label class="form-label" for="typeExp"
+                                    >Expiration</label
+                                  >
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div
+                                  data-mdb-input-init
+                                  class="form-outline form-white"
+                                >
+                                  <input
+                                    type="password"
+                                    id="typeText"
+                                    class="form-control form-control-lg"
+                                    placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
+                                    size="1"
+                                    minlength="6"
+                                    maxlength="6"
+                                  />
+                                  <label class="form-label" for="typeText"
+                                    >OPT</label
+                                  >
+                                </div>
+                              </div>
+                            </div>
+                          </form>
+
+                          <hr class="my-4" />
+
+                          <div class="d-flex justify-content-between mb-4">
+                            <p class="mb-2">Total (Include: taxes)</p>
+                            <p class="mb-2" id="totalPrice">$0</p>
+                          </div>
+                          <button
+                            type="button"
+                            class="btn btn-info btn-block btn-lg"
+                            id="paymentButton"
+                          >
+                            Payment
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
 
+    <section class="our-team section" id="myteam">
+      <div class="sec-wp">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="sec-title text-center mb-5">
+                <p class="sec-sub-title mb-3">Our Team</p>
+                <h2 class="h2-title">We are one Team</h2>
+                <div class="sec-title-shape mb-4">
+                  <img src="assets/images/title-shape.svg" alt="" />
+                </div>
+              </div>
+              <div class="responsive">
+                <div>
+                  <img
+                    src="https://t3.ftcdn.net/jpg/05/73/59/14/240_F_573591497_Qrusmm2mAyK7XfubGGt8dzvGKxxdPCxR.jpg"
+                    alt="Slide 1"
+                    style="width: 90%; border-radius: 10%"
+                  />
+                </div>
+                <div>
+                  <img
+                    src="https://people.com/thmb/dZMi4el90547mAKlLzutCH5v7O8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(999x0:1001x2):format(webp)/taylor-swift-singapore-030424-tout-0c0455753e2949558f07c22bbb6c1902.jpg"
+                    alt="Slide 2"
+                    style="width: 90%; border-radius: 10%"
+                  />
+                </div>
+                <div>
+                  <img
+                    src="https://t3.ftcdn.net/jpg/03/36/02/76/240_F_336027640_H0MgTtAMNXxgtkQspNk0iTrntVXy6P1E.jpg"
+                    alt="Slide 3"
+                    style="width: 96%; border-radius: 10%"
+                  />
+                </div>
+                <div>
+                  <img
+                    src="https://t3.ftcdn.net/jpg/01/80/80/28/360_F_180802852_C3Zm4g9avBz5osPEA769dF0KKp5cQZYT.jpg"
+                    alt="Slide 4"
+                    style="width: 90%; border-radius: 10%"
+                  />
+                </div>
+                <div>
+                  <img
+                    src="https://t3.ftcdn.net/jpg/03/08/94/88/240_F_308948872_JEUvfv5acMTa93v3AqJnrDPHEYdmidXs.jpg"
+                    alt="Slide 5"
+                    style="width: 90%; border-radius: 10%"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <hr />
+
+    <section class="our-team section" id="sponsor">
+      <div class="sec-wp">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="sec-title text-center mb-5">
+                <p class="sec-sub-title mb-3">Sponsor</p>
+                <h2 class="h2-title">My Sponsor</h2>
+                <div class="sec-title-shape mb-4">
+                  <img src="assets/images/title-shape.svg" alt="" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                  <div>
+                    <img
+                      src="https://marketingai.mediacdn.vn/wp-content/uploads/2020/11/thuong-hieu-thoi-trang-noi-tieng-louis-vuitton.jpg"
+                      alt="Slide 1"
+                      style="width: 80%; border-radius: 10%"
+                    />
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                  <div>
+                    <img
+                      src="https://mcdn.coolmate.me/image/November2023/logo-thuong-hieu-thoi-trang-2576_564.jpg"
+                      alt="Slide 2"
+                      style="width: 80%; border-radius: 10%"
+                    />
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                  <div>
+                    <img
+                      src="https://mcdn.coolmate.me/image/November2023/logo-thuong-hieu-thoi-trang-2576_532.jpg"
+                      alt="Slide 3"
+                      style="width: 80%; border-radius: 10%"
+                    />
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                  <div>
+                    <img
+                      src="https://mcdn.coolmate.me/image/November2023/logo-thuong-hieu-thoi-trang-2576_466.jpg"
+                      alt="Slide 4"
+                      style="width: 80%; border-radius: 10%"
+                    />
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                  <div>
+                    <img
+                      src="https://mcdn.coolmate.me/image/November2023/logo-thuong-hieu-thoi-trang-2576_299.jpg"
+                      alt="Slide 5"
+                      style="width: 80%; border-radius: 10%"
+                    />
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                  <div>
+                    <img
+                      src="https://mcdn.coolmate.me/image/November2023/logo-thuong-hieu-thoi-trang-2576_535.jpg"
+                      alt="Slide 6"
+                      style="width: 80%; border-radius: 10%"
+                    />
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                  <div>
+                    <img
+                      src="https://mcdn.coolmate.me/image/November2023/logo-thuong-hieu-thoi-trang-2576_470.jpg"
+                      alt="Slide 7"
+                      style="width: 80%; border-radius: 10%"
+                    />
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                  <div>
+                    <img
+                      src="https://mcdn.coolmate.me/image/November2023/logo-thuong-hieu-thoi-trang-2576_289.jpg"
+                      alt="Slide 8"
+                      style="width: 80%; border-radius: 10%"
+                    />
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                  <div>
+                    <img
+                      src="https://mcdn.coolmate.me/image/November2023/logo-thuong-hieu-thoi-trang-2576_459.jpg"
+                      alt="Slide 9"
+                      style="width: 80%; border-radius: 10%"
+                    />
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                  <div>
+                    <img
+                      src="https://mcdn.coolmate.me/image/November2023/logo-thuong-hieu-thoi-trang-2576_298.jpg"
+                      alt="Slide 10"
+                      style="width: 80%; border-radius: 10%"
+                    />
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                  <div>
+                    <img
+                      src="https://mcdn.coolmate.me/image/November2023/logo-thuong-hieu-thoi-trang-2576_595.jpg"
+                      alt="Slide 11"
+                      style="width: 80%; border-radius: 10%"
+                    />
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                  <div>
+                    <img
+                      src="https://mcdn.coolmate.me/image/November2023/logo-thuong-hieu-thoi-trang-2576_524.jpg"
+                      alt="Slide 12"
+                      style="width: 80%; border-radius: 10%"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- footer -->
-    <div class="">
+    <div id="contact">
       <footer
         class="text-black text-center text-lg-start"
         style="background-color: rgb(217, 219, 221)"
       >
-        <!-- Grid container -->
         <div class="container p-4">
-          <!--Grid row-->
           <div class="row mt-4">
-            <!--Grid column-->
             <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
               <h5 class="text-uppercase mb-4">
                 My shop
@@ -292,9 +659,6 @@
                 </li>
               </ul>
             </div>
-            <!--Grid column-->
-
-            <!--Grid column-->
             <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
               <h5 class="text-uppercase mb-4">Opening hours</h5>
 
@@ -328,6 +692,7 @@
         </div>
       </footer>
     </div>
+
     <!-- Bootstrap JavaScript Libraries -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
@@ -340,12 +705,60 @@
       integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
       crossorigin="anonymous"
     ></script>
+
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js"
       integrity="sha512-PJa3oQSLWRB7wHZ7GQ/g+qyv6r4mbuhmiDb8BjSFZ8NZ2a42oTtAq5n0ucWAwcQDlikAtkub+tPVCw4np27WCg=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/sweetalert2@11"
+    ></script>
+
     <script type="module" src="./index.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $(".responsive").slick({
+          dots: true,
+          infinite: false,
+          speed: 300,
+          slidesToShow: 4,
+          slidesToScroll: 4,
+          autoplay: true, // Tự động chuyển đổi
+          autoplaySpeed: 2000, // Tốc độ chuyển đổi (ms)
+          responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                infinite: true,
+                dots: true,
+              },
+            },
+            {
+              breakpoint: 600,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+              },
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+              },
+            },
+          ],
+        });
+      });
+    </script>
   </body>
 </html>

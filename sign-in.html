@@ -1,96 +1,207 @@
 <!DOCTYPE html>
-
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+    <title>Đăng nhập & Đăng kí</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
-    <title>Đăng nhập</title>
-
+    <link rel="icon" href="./image/logo.png" />
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="./sign-in.css" />
   </head>
 
-  <body style="opacity: 0">
-    <section>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
-      <span></span> <span></span> <span></span> <span></span> <span></span>
+  <body>
+    <main>
+      <div class="box">
+        <div class="inner-box">
+          <div class="forms-wrap">
+            <form
+              action="./index.html"
+              autocomplete="off"
+              class="sign-in-form"
+              id="sign-in-form"
+            >
+              <div class="logo">
+                <img
+                  src="./image/logo-removebg.png"
+                  alt="Shop Diep Thu"
+                  style="width: 50%"
+                />
+                <h4>Shop Diep Thu</h4>
+              </div>
 
-      <div class="signin">
-        <div class="content">
-          <h2>Sign In</h2>
+              <div class="heading">
+                <h2>Welcome!!</h2>
+                <h6>Not registred yet?</h6>
+                <a href="#" class="toggle">Đăng kí thành viên </a>
+              </div>
 
-          <form class="form" id="sign-in-form">
-            <div class="inputBox">
-              <input type="text" required id="email" /> <i>Email</i>
+              <div class="actual-form">
+                <div class="input-wrap">
+                  <input
+                    type="text"
+                    minlength="4"
+                    class="input-field"
+                    autocomplete="off"
+                    required
+                    id="email"
+                  />
+                  <label>Email</label>
+                </div>
+
+                <div class="input-wrap">
+                  <input
+                    type="password"
+                    minlength="4"
+                    class="input-field"
+                    autocomplete="off"
+                    required
+                    id="password"
+                  />
+                  <label>Password</label>
+                </div>
+
+                <input type="submit" value="Đăng Nhập" class="sign-btn" />
+
+                <p class="text">
+                  Forgotten your password or you login datails?
+                  <a href="#">Get help</a> signing in
+                </p>
+              </div>
+            </form>
+
+            <form
+              action="./index.html"
+              autocomplete="off"
+              class="sign-up-form"
+              id="sign-up-form"
+            >
+              <div class="logo">
+                <img
+                  src="./image/logo-removebg.png"
+                  alt="Shop Diep Thu"
+                  style="width: 50%"
+                />
+                <h4>Shop Diep Thu</h4>
+              </div>
+
+              <div class="heading" style="margin-bottom: 10px">
+                <h2>Register Here!!</h2>
+                <h6>Already have an account?</h6>
+                <a href="#" class="toggle">Đăng nhập</a>
+              </div>
+
+              <div class="actual-form">
+                <div class="input-wrap">
+                  <input
+                    type="text"
+                    name="txt"
+                    minlength="4"
+                    class="input-field"
+                    autocomplete="off"
+                    required
+                    id="displayName"
+                  />
+                  <label>Display Name</label>
+                </div>
+
+                <div class="input-wrap">
+                  <input
+                    type="email"
+                    name="email"
+                    class="input-field"
+                    autocomplete="off"
+                    required
+                    id="emailSignUp"
+                  />
+                  <label>Email</label>
+                </div>
+
+                <div class="input-wrap">
+                  <input
+                    type="password"
+                    minlength="4"
+                    name="password"
+                    class="input-field"
+                    autocomplete="off"
+                    required
+                    id="passwordSignUp"
+                  />
+                  <label>Password</label>
+                </div>
+
+                <input
+                  type="submit"
+                  value="Đăng kí thành viên"
+                  class="sign-btn"
+                />
+
+                <p class="text">
+                  By signing up, I agree to the
+                  <a href="#">Terms of Services</a> and
+                  <a href="#">Privacy Policy</a>
+                </p>
+              </div>
+            </form>
+          </div>
+
+          <div class="carousel">
+            <div class="images-wrapper">
+              <img
+                src="./image/img/image1.png"
+                class="image img-1 show"
+                alt=""
+              />
+              <img src="./image/img/image2.png" class="image img-2" alt="" />
+              <img src="./image/img/image3.png" class="image img-3" alt="" />
             </div>
 
-            <div class="inputBox">
-              <input type="password" required id="password" /> <i>Password</i>
-            </div>
+            <div class="text-slider">
+              <div class="text-wrap">
+                <div class="text-group">
+                  <h2>Welcome to my website</h2>
+                  <h2>Welcome to my website</h2>
+                  <h2>Welcome to my website</h2>
+                </div>
+              </div>
 
-            <div class="links">
-              <a href="#">Forgot Password</a>
-              <a href="#">Signup</a>
+              <div class="bullets">
+                <span class="active" data-value="1"></span>
+                <span data-value="2"></span>
+                <span data-value="3"></span>
+              </div>
             </div>
-
-            <div class="inputBox">
-              <input type="submit" value="Login" />
-            </div>
-          </form>
+          </div>
         </div>
       </div>
-    </section>
+    </main>
 
     <!-- partial -->
     <script type="module" src="./sign-in.js"></script>
+    <script type="module" src="./sign-up.js"></script>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </body>
 </html>
