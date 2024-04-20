@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Title</title>
+    <title>DiepThu-Shop</title>
     <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -65,21 +65,25 @@
 
           <div>
             <button
-              class="pr-2 cart-shopping me-2"
+              class="pr-2 cart-shopping me-2 position-relative"
               type="button"
               data-bs-toggle="modal"
               data-bs-target="#myModal"
             >
               <span><i class="fa-solid fa-cart-shopping"></i></span>
-              <span id="product-count">0</span>
+              <span
+                id="product-count"
+                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                >0</span
+              >
             </button>
           </div>
-
           <div class="text-end" id="user-actions"></div>
         </div>
       </div>
     </header>
 
+    <!-- banner -->
     <div class="slider mt-1">
       <!-- list Items -->
       <div class="list">
@@ -187,6 +191,7 @@
         </div>
       </div>
     </div>
+
     <!-- /////////////////////////////////////////// -->
     <section
       style="background-image: url(assets/images/menu-bg.png)"
@@ -207,7 +212,7 @@
                   <img src="./image/title-shape.svg" alt="myphoto" />
                 </div>
               </div>
-              <form style="position: relative">
+              <form style="position: relative" id="search-form" action="">
                 <input
                   type="text"
                   id="search"
@@ -242,7 +247,7 @@
                       <h5 class="mb-3">
                         <a
                           class="text-body"
-                          style="text-decoration: none; pointer: cursor"
+                          style="text-decoration: none; cursor: pointer"
                           href="./index.html"
                         >
                           <i class="fas fa-long-arrow-alt-left me-2"></i>Go
@@ -257,8 +262,9 @@
                         <div>
                           <h2 class="mb-1">Your shopping cart</h2>
                           <p class="mb-0">
-                            You have <span id="product-count">0</span> items in
-                            your cart
+                            You have
+                            <span id="product-count-cart">0</span> items in your
+                            cart
                           </p>
                         </div>
                         <div>
@@ -279,7 +285,7 @@
 
                     <!-- thanh toan -->
                     <div class="col-lg-5">
-                      <div class="card bg-success text-white rounded-3">
+                      <div class="card bg-primary text-white rounded-3">
                         <div class="card-body">
                           <div
                             class="d-flex justify-content-between align-items-center mb-4"
@@ -335,48 +341,6 @@
                                 >Card Number</label
                               >
                             </div>
-
-                            <div class="row mb-4">
-                              <div class="col-md-6">
-                                <div
-                                  data-mdb-input-init
-                                  class="form-outline form-white"
-                                >
-                                  <input
-                                    type="text"
-                                    id="typeExp"
-                                    class="form-control form-control-lg"
-                                    placeholder="MM/YYYY"
-                                    size="7"
-                                    id="exp"
-                                    minlength="7"
-                                    maxlength="7"
-                                  />
-                                  <label class="form-label" for="typeExp"
-                                    >Expiration</label
-                                  >
-                                </div>
-                              </div>
-                              <div class="col-md-6">
-                                <div
-                                  data-mdb-input-init
-                                  class="form-outline form-white"
-                                >
-                                  <input
-                                    type="password"
-                                    id="typeText"
-                                    class="form-control form-control-lg"
-                                    placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
-                                    size="1"
-                                    minlength="6"
-                                    maxlength="6"
-                                  />
-                                  <label class="form-label" for="typeText"
-                                    >OPT</label
-                                  >
-                                </div>
-                              </div>
-                            </div>
                           </form>
 
                           <hr class="my-4" />
@@ -404,6 +368,7 @@
       </section>
     </div>
 
+    <!-- My team -->
     <section class="our-team section" id="myteam">
       <div class="sec-wp">
         <div class="container">
@@ -452,6 +417,20 @@
                     style="width: 90%; border-radius: 10%"
                   />
                 </div>
+                <div>
+                  <img
+                    src="https://forlike.pro/wp-content/uploads/2022/08/4-chau-bui.jpg"
+                    alt="Slide 5"
+                    style="width: 85%; border-radius: 10%"
+                  />
+                </div>
+                <div>
+                  <img
+                    src="https://hoangkimfashion.com/wp-content/uploads/2020/12/062.png"
+                    alt="Slide 5"
+                    style="width: 90%; border-radius: 10%"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -460,6 +439,7 @@
     </section>
     <hr />
 
+    <!-- my sponsor -->
     <section class="our-team section" id="sponsor">
       <div class="sec-wp">
         <div class="container">
@@ -587,6 +567,7 @@
         </div>
       </div>
     </section>
+
     <!-- footer -->
     <div id="contact">
       <footer
@@ -638,7 +619,7 @@
             </div>
 
             <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase mb-4 pb-1">Menu items</h5>
+              <h5 class="text-uppercase mb-4 pb-1">Contact with us</h5>
 
               <ul class="fa-ul" style="margin-left: 1.65em">
                 <li class="mb-3">
@@ -647,7 +628,7 @@
                 </li>
                 <li class="mb-3">
                   <span class="fa-li"><i class="fas fa-envelope"></i></span
-                  ><span class="ms-2">dieuthu_shop@dieuthu.com</span>
+                  ><span class="ms-2">diepthu_shop@diepthu.com</span>
                 </li>
                 <li class="mb-3">
                   <span class="fa-li"><i class="fas fa-phone"></i></span
@@ -726,12 +707,12 @@
       $(document).ready(function () {
         $(".responsive").slick({
           dots: true,
-          infinite: false,
+          infinite: true,
           speed: 300,
           slidesToShow: 4,
           slidesToScroll: 4,
-          autoplay: true, // Tự động chuyển đổi
-          autoplaySpeed: 2000, // Tốc độ chuyển đổi (ms)
+          autoplay: true,
+          autoplaySpeed: 1000,
           responsive: [
             {
               breakpoint: 1024,
@@ -758,6 +739,16 @@
             },
           ],
         });
+        $(".responsive").on(
+          "beforeChange",
+          function (event, slick, currentSlide, nextSlide) {
+            if (nextSlide === slick.slideCount - 1) {
+              setTimeout(function () {
+                $(".responsive").slick("slickGoTo", 0);
+              }, 2000);
+            }
+          }
+        );
       });
     </script>
   </body>

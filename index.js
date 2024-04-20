@@ -6,6 +6,7 @@ const firebase = new Firebase();
 const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 document.getElementById("product-count").innerHTML = cart?.length || 0;
+document.getElementById("product-count-cart").innerHTML = cart?.length || 0;
 
 function handleAuthStateChanged(user) {
   if (user) {
@@ -20,7 +21,7 @@ function handleAuthStateChanged(user) {
           aria-expanded="false"
         >
           <img
-            src="https://github.com/mdo.png"
+            src="https://cdn1.iconfinder.com/data/icons/e-commerce-line-circle-multi-color/750/7_-_Clothes-512.png"
             alt="mdo"
             width="32"
             height="32"
@@ -32,7 +33,7 @@ function handleAuthStateChanged(user) {
             <a class="dropdown-item" href="#">Xin chào ${user.displayName}</a>
           </li>
           <li>
-            <a class="dropdown-item" href="#"> ${user.email}</a>
+            <a class="dropdown-item" href="#">Your email: ${user.email}</a>
           </li>
 
           <li><a class="dropdown-item" href="#" id="sign-out-btn">Đăng xuất</a></li>
@@ -59,7 +60,7 @@ function handleAuthStateChanged(user) {
 onAuthStateChanged(firebase.auth, handleAuthStateChanged);
 
 const result = await axios.get(
-  "https://661aaae365444945d04e42f0.mockapi.io/products"
+  "https://6607c777a2a5dd477b136b02.mockapi.io/producuts"
 );
 
 const products = result.data;
@@ -108,7 +109,7 @@ function renderCart(data) {
   if (data.length === 0) {
     document.getElementById("cart-body").innerHTML = `
     <div class="text-center">
-    <h3>Nothing :))) You must 10 items in here!!! Now </h3>
+    <h3>Nothing :))) You must 10 items in here!!! Immediately </h3>
     </div>`;
   }
 
@@ -159,7 +160,7 @@ function payment(event) {
   localStorage.clear();
 
   window.location.reload();
-  alert("Thanks for visiting");
+  alert("Thanks for visiting!!!");
 }
 
 document.getElementById("paymentButton").addEventListener("click", payment);
@@ -196,6 +197,52 @@ for (let index = 0; index < products.length; index++) {
 }
 
 document.getElementById("product-list").innerHTML = htmlString;
+
+// search the items
+
+function handleSearch(e) {
+  e.preventDefault();
+  const searchInput = document.getElementById("search").value;
+  console.log(searchInput);
+
+  const filtered = products.filter(function (product) {
+    return product.name.includes(searchInput);
+  });
+
+  console.log(filtered);
+  console.log(products);
+  let htmlString = "";
+
+  for (let index = 0; index < filtered.length; index++) {
+    htmlString =
+      htmlString +
+      `
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card my-2">
+            <img src="${filtered[index].imgUrl}" class="card-img-top" />
+            <div class="card-body">
+              <h5 class="card-title" style="height: 50px;">${filtered[index].name}</h5>
+              <span class="price text-decoration-line-through"
+                >Price origin: $${filtered[index].price}</span
+              >
+              <span class="salePrice">Price: $${filtered[index].salePrice}</span>
+            </div>
+            <span class = "name_cart">Add to Cart </span>
+            <button
+              class="btn btn-warning btn-addItem"
+              onclick="addToCart(${filtered[index].id})"
+            >
+              <i class="fa-solid fa-plus" ></i>
+            </button>
+          </div>
+        </div>
+      `;
+  }
+
+  document.getElementById("product-list").innerHTML = htmlString;
+}
+
+document.getElementById("search-form").addEventListener("input", handleSearch);
 
 // banner slick slide
 let items = document.querySelectorAll(".slider .list .item");

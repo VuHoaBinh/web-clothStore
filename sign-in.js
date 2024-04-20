@@ -22,16 +22,25 @@ function handleAuthStateChanged(user) {
       const password = document.getElementById("password").value;
 
       // validation: kiem tra du lieu co hop le hay khong
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        Swal.fire({
+          title: "Đăng kí thất bại",
+          text: "Please enter a valid email address.",
+          icon: "error",
+        });
+        return;
+      }
 
       try {
         const result = await firebase.login(email, password);
-        const user = result.user;
-        console.log(user);
         Swal.fire({
           title: "Đăng kí thành công",
           text: "Welcome to my website",
           icon: "success",
         });
+        const user = result.user;
+        console.log(user);
       } catch (error) {
         Swal.fire({
           title: "Đăng kí thất bại",

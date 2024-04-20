@@ -18,19 +18,28 @@ function handleAuthStateChanged(user) {
       const password = document.getElementById("passwordSignUp").value;
       console.log(displayName, email, password);
 
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        Swal.fire({
+          title: "Đăng kí thất bại",
+          text: "Please enter a valid email address.",
+          icon: "error",
+        });
+        return;
+      }
       try {
         const result = await firebase.register(email, password);
+        Swal.fire({
+          title: "Đăng kí thành công",
+          text: "Welcome to my website",
+          icon: "success",
+        });
 
         // Update the user's display name
         await firebase.update(displayName);
 
         const user = result.user;
         console.log(user);
-        Swal.fire({
-          title: "Đăng kí thành công",
-          text: "Welcome to my website",
-          icon: "success",
-        });
       } catch (error) {
         Swal.fire({
           title: "Đăng kí thất bại",
